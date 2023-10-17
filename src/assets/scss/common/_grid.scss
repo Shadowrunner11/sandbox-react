@@ -1,0 +1,15 @@
+@import "./variables";
+@import "./mixins";
+
+.container {
+  overflow-y: hidden;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  @include media_min_width($small-screen){
+    padding: 0 34px;
+  }
+  @include media_min_width($medium-screen){
+    padding: 0 calc(max(72px, 8vw));
+  }
+}

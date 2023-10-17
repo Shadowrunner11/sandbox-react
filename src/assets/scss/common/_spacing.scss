@@ -1,0 +1,59 @@
+$spaceamounts: (
+  4,
+  6,
+  8,
+  12,
+  16,
+  18,
+  20,
+  24,
+  26,
+  28,
+  32,
+  36,
+  40,
+  45,
+  60,
+  70,
+  80
+);
+$sides: (top, bottom, left, right);
+
+@each $space in $spaceamounts {
+  @each $side in $sides {
+    .m#{str-slice($side, 0, 1)}-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+
+    .p#{str-slice($side, 0, 1)}-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+  }
+
+  .mx-#{$space} {
+    margin-left: #{$space}px !important;
+    margin-right: #{$space}px !important;
+  }
+  .px-#{$space} {
+    padding-left: #{$space}px !important;
+    padding-right: #{$space}px !important;
+  }
+  .my-#{$space} {
+    margin-top: #{$space}px !important;
+    margin-bottom: #{$space}px !important;
+  }
+  .py-#{$space} {
+    padding-top: #{$space}px !important;
+    padding-bottom: #{$space}px !important;
+  }
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}

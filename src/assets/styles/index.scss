@@ -1,0 +1,253 @@
+@import 'assets/scss/common/spacing.scss';
+@import 'assets/scss/common/typography.scss';
+@import 'assets/scss/common/colors.scss';
+@import 'assets/scss/common/grid.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    margin-left: 5px;
+    background: #e7e7e7;
+    width: 11px;
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: $cyan2;
+    -webkit-box-shadow: inset 0 0 6px $cyan2;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Foco', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primary-color: #fad949;
+  --secondary-color: #00acc1;
+}
+
+.rdtPicker {
+  color: #8b8d8e;
+}
+
+.rdtPicker .rdtDisabled {
+  opacity: 0.4;
+}
+
+.rdtPicker td.rdtDay.rdtOld,
+.rdtPicker td.rdtDay.rdtNew {
+  pointer-events: none;
+  color: transparent;
+  height: 0;
+  font-size: 0;
+}
+
+.react-datetime-picker__wrapper {
+  border: none !important;
+}
+
+.react-datetime-picker__inputGroup__input:invalid {
+  background: none !important;
+}
+
+.react-datetime-picker__inputGroup__leadingZero {
+  color: #333 !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+.buttonComp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $magenta2;
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(2, 5, 32, 0.3);
+  border: none;
+  border-radius: 22px;
+  cursor: pointer;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.tachado {
+  text-decoration: line-through;
+}
+
+.fill-width {
+  width: 100%;
+}
+
+.fill-height {
+  height: 100%;
+}
+
+.full-fill {
+  width: 100%;
+  height: 100%;
+}
+
+input[type='range'] {
+  -webkit-appearance: none;
+  background: $gray2;
+  background-image: linear-gradient($cyan2, $cyan2);
+  background-repeat: no-repeat;
+}
+
+//style for input range's thumb
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 31px;
+  width: 31px;
+  background-color: #ffffff !important;
+  border: 1px solid $cyan1;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px $cyan3;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -14px;
+}
+
+/* All the same stuff for Firefox */
+
+input[type='range']::-moz-range-thumb {
+  box-shadow: 0 2px 5px $cyan3;
+  border: 1px solid $cyan1;
+  height: 31px;
+  width: 31px;
+  border-radius: 50%;
+  background-color: #ffffff !important;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+
+input[type='range']::-ms-thumb {
+  box-shadow: 0 2px 5px $cyan3;
+  border: 1px solid $cyan1;
+  height: 31px;
+  width: 31px;
+  border-radius: 50%;
+  background-color: #ffffff !important;
+  cursor: pointer;
+}
+
+//style for input range's track
+input[type='range']::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  border-radius: 20px;
+}
+
+input[type='range']::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: $cyan2;
+  border-radius: 20px;
+}
+
+input[type='range']::-ms-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+
+input[type='range']::-ms-fill-lower {
+  background: red;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0 0 1px #0d0d0d;
+}
+
+input[type='range']:focus::-ms-fill-lower {
+  background: green;
+}
+
+/*** animation */
+
+.fadeIn {
+  @include animation(fadeIn 1.5s ease);
+}
+
+@include keyframes(fadeIn) {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.content-btn-up-down {
+  display: flex;
+  justify-content: flex-end;
+
+  @include media_max_width($medium-screen) {
+    display: none;
+  }
+}
+
+/*** end animation */
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-max-medium-none {
+  @include media_max_width($medium-screen) {
+    display: none !important;
+  }
+}
+
+.d-min-medium-none {
+  @include media_min_width($medium-screen) {
+    display: none !important;
+  }
+}
+
+.break-word {
+  word-break: break-word;
+}

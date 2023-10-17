@@ -1,0 +1,159 @@
+@import './variables';
+
+@mixin font($size, $fWeight, $height, $color) {
+  color: $color;
+  font-size: $size;
+  font-weight: $fWeight;
+  line-height: $height;
+}
+
+@mixin width-height($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  -o-transform: $transform;
+  transform: $transform;
+}
+
+@mixin borderRadius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+}
+
+@mixin boxShadow($box-shadow...) {
+  -webkit-box-shadow: $box-shadow;
+  -moz-box-shadow: $box-shadow;
+  box-shadow: $box-shadow;
+}
+
+@mixin filter($value) {
+  -webkit-filter: $value;
+  -moz-filter: $value;
+  -o-filter: $value;
+  filter: $value;
+}
+
+@mixin animation($data) {
+  animation: $data;
+  -webkit-animation: $data;
+  -moz-animation: $data;
+  -o-animation: $data;
+}
+
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin limit-text($numberLines) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $numberLines;
+  -webkit-box-orient: vertical;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin clamp(
+  $property,
+  $min-size,
+  $scaler,
+  $max-size,
+  $min-size-left: false,
+  $scaler-left: false,
+  $max-size-left: false
+) {
+  @if $min-size-left == false {
+    #{$property}: $max-size;
+    #{$property}: #{'min(max(#{$min-size}, #{$scaler}), #{$max-size})'};
+    #{$property}: clamp($min-size, $scaler, $max-size);
+  } @else if $min-size-left == 0 or $min-size-left == auto {
+    #{$property}: $max-size $min-size-left;
+    #{$property}: #{'min(max(#{$min-size}, #{$scaler}), #{$max-size})'}
+      $min-size-left;
+    #{$property}: clamp($min-size, $scaler, $max-size) $min-size-left;
+  } @else {
+    #{$property}: $max-size $min-size-left;
+    #{$property}: #{'min(max(#{$min-size}, #{$scaler}), #{$max-size})'}
+      #{'min(max(#{$min-size-left}, #{$scaler-left}), #{$max-size-left})'};
+    #{$property}: clamp($min-size, $scaler, $max-size)
+      clamp($min-size-left, $scaler-left, $max-size-left);
+  }
+}
+
+@function col($columns, $total) {
+  @return (100% / $total) * $columns;
+}
+
+@mixin media_min_width($pixel) {
+  @media only screen and (min-width: $pixel) {
+    @content;
+  }
+}
+
+@mixin media_max_width($pixel) {
+  @media only screen and (max-width: $pixel) {
+    @content;
+  }
+}
+
+@mixin media($type) {
+  @if $type == small {
+    @media only screen and (max-width: $medium-screen) {
+      @content;
+    }
+  }
+  @if $type == medium {
+    @media only screen and (max-width: $large-screen) {
+      @content;
+    }
+  }
+  @if $type == mobile-mini {
+    @media only screen and (max-width: $xsmall-screen) {
+      @content;
+    }
+  }
+  @if $type == mobile {
+    @media only screen and (max-width: $small-screen) {
+      @content;
+    }
+  }
+  @if $type == tablet {
+    @media only screen and (max-width: $medium-screen) {
+      @content;
+    }
+  }
+  @if $type == desktop-mini {
+    @media only screen and (max-width: $large-screen) {
+      @content;
+    }
+  }
+  @if $type == desktop {
+    @media only screen and (max-width: $xlarge-screen) {
+      @content;
+    }
+  }
+}
