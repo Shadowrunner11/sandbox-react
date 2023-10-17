@@ -1,17 +1,26 @@
-import { PropsWithChildren } from "react"
+import { PropsWithChildren, useContext } from "react"
 import { ModalStateNames, setNextState, setPrevState } from "../../observers"
+import { productDetail } from "../providers/testWithref"
 
-const handleNext2 = ()=>{setNextState(ModalStateNames.SECOND)}
+const handleNext2 = ()=>{setNextState({
+  name:ModalStateNames.SECOND
+})}
 
 
 
-const handleNext3 = ()=>{setNextState(ModalStateNames.THIRD)}
+const handleNext3 = ()=>{setNextState({
+  name: ModalStateNames.THIRD
+})}
 
-export const ModalContent1 = ({children}:PropsWithChildren)=> {
-  
+interface ModalDataProps extends PropsWithChildren{
+  data?: Record<string, unknown>
+}
+
+export const ModalContent1 = ({children, data}:ModalDataProps)=> {
   return (
     <div>
       First Modal
+      {String(data?.productId)}
       <button onClick={handleNext2}>
         Next
         {children}

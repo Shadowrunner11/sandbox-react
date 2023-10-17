@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import type { BehaviorSubject } from "rxjs";
 
-export interface ControlState<StateNames>{
-  name?: StateNames;
-  previous?: ControlState<StateNames>
+export interface ControlState<Data>{
+  data?: Data;
+  previousState?: ControlState<Data>
 }
 
 export function bindLense<T =unknown>(subject: BehaviorSubject<T>):[(nextValue: T )=> void, () => T]{
@@ -29,9 +29,9 @@ export function orderControlsLense<T>(subject: BehaviorSubject<ControlState<T> |
   return {
     setState,
     useObserverState,
-    setPrevState: () => setState(subject.value?.previous),
+    setPrevState: () => setState(subject.value?.previousState),
     setNextState: (nextStateName: T) => setState({
-    name:nextStateName,
-    previous: subject.value
+    data:nextStateName,
+    previousState: subject.value
   })}
 }

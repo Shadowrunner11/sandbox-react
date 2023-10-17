@@ -7,12 +7,17 @@ export enum ModalStateNames {
   THIRD = 'third'
 }
 
-export const modalState$ = new BehaviorSubject<ControlState<ModalStateNames> | undefined>(undefined)
+interface ModalData {
+  name: ModalStateNames;
+  meta?: Record<string, unknown>
+}
+
+export const modalState$ = new BehaviorSubject<ControlState<ModalData> | undefined>(undefined)
 
 export const {
   setState:setModalState, 
   useObserverState: useModalState,
   setNextState,
   setPrevState
-} = orderControlsLense<ModalStateNames>(modalState$)
+} = orderControlsLense<ModalData>(modalState$)
 
